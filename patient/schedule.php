@@ -44,6 +44,8 @@
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $result = $stmt->get_result();
+    include("../connection.php");
+    $userrow = $database->query("select * from patient where pemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
